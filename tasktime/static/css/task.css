@@ -1,0 +1,102 @@
+/* TASK */
+.task{
+    background-color: white;
+    height: 45px;
+    display: flex;
+    padding:5px;
+    margin:2px auto;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    transition: .5s all ease-out;
+}
+.task:hover{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+
+.task .code,
+.task .title,
+.task .status,
+.task .operations{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.task .code{
+    flex: 0 0 10%;
+}
+.task .title{
+    flex: 1 0 30%;
+}
+.task .status{
+    flex: 0 0 20%;
+}
+.task .operations{
+    flex: 0 0 40%;    
+}
+
+/* status in process */
+.in-process .task .title{
+    flex: 1 0 25%;
+}
+.in-process .task .status{
+    flex: 0 0 20%;
+}
+.in-process .task .operations{
+    flex: 0 0 45%;   
+}
+
+/* status finalized */
+.finalized .task .title{
+    flex: 1 0 40%;
+}
+.finalized .task .status{
+    flex: 0 0 40%;
+}
+.finalized .task .operations{
+    flex: 0 0 10%; 
+}
+
+
+.task .code p{
+    font-size: 14px;
+    color:rgba(0,0,0,0.5);
+}
+
+.task .title p{
+    text-align: left;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+
+.task .title span.code{
+    position: absolute;
+    left: 5px;
+    bottom: -5px;
+    font-size: 14px;
+    color:rgba(0,0,0,0.5);
+}
+
+.task .status p{
+    text-align: center;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 13px;
+    color:rgba(0,0,0, .5);
+}
+
+.task .operations button{
+    margin: 1px 2px;
+}
+.task .operations .btn{
+    min-width: 50px;
+    
+}
+.task .operations .btn:hover{
+    background-color: var(--primary);
+}

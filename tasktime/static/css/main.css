@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url('create.css');
+@import url('task.css');
+
+
+:root{
+    --dark:#343a40;
+    --primary:#007bff;
+}
+
+*, *::before, *::after{
+  margin: 0;
+  padding:0;
+  box-sizing: border-box;
+}
+
+html{
+  scroll-behavior: smooth;
+  color:var(--dark);
+}
+
+body{
+  overflow-x: hidden;
+  background-color: #f8f8f8;
+  font-family: 'Ubuntu', sans-serif;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+main{
+  flex-grow: 1;
+}
+
+header, footer{
+    padding: 20px;
+}
+header a{
+    text-decoration: none;
+    color:var(--dark);
+}
+.container{
+    max-width: 1200px;
+    margin: auto;
+}
+.d-none{
+    display: none;
+}
+
+#tasks{
+    margin:auto;
+}
+
+
+
+/* BTN */
+.btn{
+    color:white;
+    padding: 3px 5px;
+    background-color:var(--dark);
+    border: none;
+    border-radius: 5px;
+}
+.btn-create{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-i{
+    width: 27px;
+    height: 27px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}
+.btn-i:hover{
+    background-color: rgba(0,0,0,0.07);
+}
+
+/* TASK LIST */
+#tasks .list-container{
+    margin-top: 50px;
+}
+.list-container > .title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.list-container > .title h2{
+    text-align: left;
+}
+
+.lists{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.lists .pending,
+.lists .in-process,
+.lists .finalized{    
+    flex: 0 0 32%;
+}
+
