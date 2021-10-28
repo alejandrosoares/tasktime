@@ -62,7 +62,7 @@
                             </div>
                             <div class="body-list">
                                 {% for task in pending %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}">
+                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
                                     <div class="code">
                                         <p class="code">{{ task.code }}</p>
                                     </div>
@@ -73,8 +73,8 @@
                                         <p>Pending</p>
                                     </div>
                                     <div class="operations">
-                                        <button class="btn">Start</button>
-                                        <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                                        <button class="btn start">Start</button>
+                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
@@ -93,7 +93,7 @@
                             <div class="body-list">
                             
                                 {% for task in paused %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}">
+                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
                                     <div class="code">
                                         <p class="code">{{ task.code }}</p>
                                     </div>
@@ -104,16 +104,16 @@
                                         <p>Paused</p>
                                     </div>
                                     <div class="operations">
-                                        <button class="btn">Resume</button>
-                                        <button class="btn-i" title="Pause"><i class="bi bi-pause-fill"></i></button>
-                                        <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                                        <button class="btn resume">Resume</button>
+                                        <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
+                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
                                 {% endfor %}
 
                                 {% for task in in_process %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}">
+                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
                                     <div class="code">
                                         <p class="code">{{ task.code }}</p>
                                     </div>
@@ -124,9 +124,9 @@
                                         <p>In process</p>
                                     </div>
                                     <div class="operations">
-                                        <button class="btn">Finalized</button>
-                                        <button class="btn-i" title="Pause"><i class="bi bi-pause-fill"></i></button>
-                                        <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                                        <button class="btn finalize">Finalized</button>
+                                        <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
+                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
@@ -146,7 +146,7 @@
                             </div>
                             <div class="body-list">
                                 {% for task in finalized %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}">
+                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
                                     <div class="code">
                                         <p class="code">{{ task.code }}</p>
                                     </div>
@@ -179,7 +179,7 @@
             </div>
             
         <template id="item-pending">
-            <div class="task" data-id="" data-code="">
+            <div class="task" data-id="" data-code="" data-status="0">
                 <div class="code">
                     <p></p>
                 </div>
@@ -190,15 +190,15 @@
                     <p>Pending</p>
                 </div>
                 <div class="operations">
-                    <button class="btn">Start</button>
-                    <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn start">Start</button>
+                    <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                     <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
 
         <template id="item-in-process">
-            <div class="task" data-id="" data-code="">
+            <div class="task" data-id="" data-code="" data-status="">
                 <div class="code">
                     <p></p>
                 </div>
@@ -209,15 +209,16 @@
                     <p>In process</p>
                 </div>
                 <div class="operations">
-                    <button class="btn">Pause</button>
-                    <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn pause">Finalized</button>
+                    <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
+                    <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                     <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
 
         <template id="item-finalized">
-            <div class="task" data-id="" data-code="">
+            <div class="task" data-id="" data-code="" data-status="3">
                 <div class="code">
                     <p></p>
                 </div>

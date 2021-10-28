@@ -66,6 +66,9 @@ def UpdateView(request):
         try:
             task = Task.objects.get(id=id_task)
 
+            print(status)
+            print(task.status)
+
             if ((task.status == 0 and status == 1) or 
                 (task.status == 1 and status == 3) or
                 (task.status == 2 and status == 3) or

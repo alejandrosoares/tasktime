@@ -21,8 +21,10 @@ function createTaskNode(obj){
         code = template.querySelector(".code p"),
         title = template.querySelector(".title p");
 
+    
     div.setAttribute("data-id", obj.id);
     div.setAttribute("data-code", obj.code);
+    div.setAttribute("data-status", obj.status);
     code.textContent = obj.code;
     title.textContent = obj.title;
 

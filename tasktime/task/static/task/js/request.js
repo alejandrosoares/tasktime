@@ -33,7 +33,7 @@ const makeResquest = (url, data, successFunction) => {
            messageResponse("error", null)
         }
     })
-    .catch(error => messageResponse("error", null));
+    //.catch(error => messageResponse("error", null));
 }
 
 export default makeResquest;

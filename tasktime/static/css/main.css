@@ -1,46 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
 
-:root{
-    --dark:#343a40;
-    --primary:#007bff;
-    --white:#f8f8f8;
+:root {
+  --dark: #343a40;
+  --primary: #007bff;
+  --white: #f8f8f8;
 }
 
-*, *::before, *::after{
+*,
+*::before,
+*::after {
   margin: 0;
-  padding:0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html{
+html {
   scroll-behavior: smooth;
-  color:var(--dark);
+  color: var(--dark);
 }
 
-body{
+body {
   overflow-x: hidden;
   background-color: var(--white);
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   min-height: 100vh;
 }
-main{
+main {
   flex-grow: 1;
 }
 
-header, footer{
-    padding: 20px;
+header,
+footer {
+  padding: 20px;
 }
-header a{
-    text-decoration: none;
-    color:var(--dark);
+header a {
+  text-decoration: none;
+  color: var(--dark);
 }
-.container{
-    max-width: 1200px;
-    margin: auto;
+.container {
+  max-width: 1200px;
+  margin: auto;
 }
-.d-none{
-    display: none;
+.d-none {
+  display: none;
+}
+
+.hidden{
+  visibility: hidden;
+  opacity: 0;
+}
+
+.visible{
+  visibility: visible;
+  opacity: 1;
 }
