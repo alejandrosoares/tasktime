@@ -1,12 +1,12 @@
 /* CREATE */       
-.create{
+.new-task{
     margin:auto;
     max-width: 400px;
     display: flex;
     justify-content: right;
     position: relative;
 }
-.create input{
+.new-task input{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
     border-top-right-radius: 0;
@@ -17,15 +17,15 @@
     padding-left: 10px;
     z-index: 100;
 }
-.create input:focus{
+.new-task input:focus{
     border: 1px solid var(--primary);
     outline: none;
 }
-.create input:focus + button{
+.new-task input:focus + button{
     background-color: var(--primary);
 }
 
-.create .msg{
+.new-task .msg{
     position: absolute;
     left:0;
     top:-18px;
@@ -34,7 +34,7 @@
     width: 100%;
     transition: 0.4s all ease-out;
 }
-.create .msg.hidden{
+.new-task .msg.hidden{
     left:0;
     top:0;
 }

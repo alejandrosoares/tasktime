@@ -7,10 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'task/css/main.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/bootstrap-icons.min.css' %}">
     <title>Task Time</title>
 </head>
 <body>
+
+    
 
     <header>
         <a href="#">
@@ -23,7 +26,24 @@
 
             <div id="tasks">
 
-                <div class="create">
+                <!-- Messages -->
+                <div class="tasks-message">
+                    <div class="msg create">
+                        <img src="{% static 'task/img/check.png' %}"> 
+                        <p></p>
+                    </div>
+                    <div class="msg error">
+                        <img src="{% static 'task/img/warning.png' %}"> 
+                        <p>Something went wrong <br>Please, try again</p>
+                    </div>
+                    <div class="msg delete">
+                        <img src="{% static 'task/img/trash.png' %}"> 
+                        <p>Task deleted</p>
+                    </div>
+                </div>
+                <!--/messages -->
+
+                <div class="new-task">
                     <p class="msg hidden">Write a new task below</p>
                     <input type="text" id="input-task" placeholder="White your new task">
                     <button type="button" class="btn btn-create">Create</button>
@@ -55,8 +75,12 @@
                                     <div class="operations">
                                         <button class="btn">Start</button>
                                         <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
+                                </div>
+                                {% empty %}
+                                <div class="empty-list">
+                                    <p>You have no pending tasks.</p>
                                 </div>
                                 {% endfor %}
                             </div>
@@ -83,7 +107,7 @@
                                         <button class="btn">Resume</button>
                                         <button class="btn-i" title="Pause"><i class="bi bi-pause-fill"></i></button>
                                         <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
                                 {% endfor %}
@@ -103,10 +127,16 @@
                                         <button class="btn">Finalized</button>
                                         <button class="btn-i" title="Pause"><i class="bi bi-pause-fill"></i></button>
                                         <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
                                 {% endfor %}
+
+                                {% if not paused and not in_process %}
+                                <div class="empty-list">
+                                    <p>You have no tasks in process or paused.</p>
+                                </div>
+                                {% endif %}
                             </div>
                         </div>
 
@@ -127,20 +157,32 @@
                                         <p>{{ task.real_duration }}</p>
                                     </div>
                                     <div class="operations">
-                                        <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
+                                </div>
+                                {% empty %}
+                                <div class="empty-list">
+                                    <p>You have no completed tasks.</p>
                                 </div>
                                 {% endfor %}
                             </div>
                         </div>
 
                     </div>
-                    
+                </div>
+                <div class="references d-none">
+                    {% csrf_token %}
+                    <input type="hidden" class="url-create" value="{% url 'task:create' %}">
+                    <input type="hidden" class="url-update" value="{% url 'task:update' %}">
+                    <input type="hidden" class="url-delete" value="{% url 'task:delete' %}">
                 </div>
             </div>
             
         <template id="item-pending">
             <div class="task" data-id="" data-code="">
+                <div class="code">
+                    <p></p>
+                </div>
                 <div class="title">
                     <p></p>
                 </div>
@@ -149,7 +191,8 @@
                 </div>
                 <div class="operations">
                     <button class="btn">Start</button>
-                    <button class="btn">Delete</button>
+                    <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
@@ -157,7 +200,7 @@
         <template id="item-in-process">
             <div class="task" data-id="" data-code="">
                 <div class="code">
-                    <p class="code"></p>
+                    <p></p>
                 </div>
                 <div class="title">
                     <p></p>
@@ -168,7 +211,7 @@
                 <div class="operations">
                     <button class="btn">Pause</button>
                     <button class="btn-i" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                    <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
@@ -176,7 +219,7 @@
         <template id="item-finalized">
             <div class="task" data-id="" data-code="">
                 <div class="code">
-                    <p class="code"></p>
+                    <p></p>
                 </div>
                 <div class="title">
                     <p></p>
@@ -185,7 +228,7 @@
                     <p></p>
                 </div>
                 <div class="operations">
-                    <button class="btn-i" title="Delete"><i class="bi bi-trash"></i></button>
+                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
@@ -198,6 +241,6 @@
     </footer>
 
 
-    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'task/js/main.js' %}" type="module"></script>
 </body>
 </html>

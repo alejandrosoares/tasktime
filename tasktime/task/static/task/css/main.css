@@ -1,0 +1,65 @@
+@import url('message.css');
+@import url('create.css');
+@import url('task.css');
+
+#tasks{
+    margin:auto;
+}
+
+/* BTN */
+.btn{
+    color:white;
+    padding: 3px 5px;
+    background-color:var(--dark);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.btn-create{
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    z-index: 100;
+}
+
+.btn-i{
+    width: 27px;
+    height: 27px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}
+.btn-i:hover{
+    background-color: rgba(0,0,0,0.07);
+}
+
+/* TASK LIST */
+#tasks .list-container{
+    margin-top: 50px;
+}
+.list-container > .title{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.list-container > .title h2{
+    text-align: left;
+}
+
+.lists{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.lists .pending,
+.lists .in-process,
+.lists .finalized{    
+    flex: 0 0 32%;
+}
+
+.empty-list{
+    margin: 10px auto;
+}
+.empty-list p{
+    text-align: left;
+}
+
