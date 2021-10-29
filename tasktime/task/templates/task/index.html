@@ -78,11 +78,11 @@
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
-                                {% empty %}
-                                <div class="empty-list">
+                                {% endfor %}
+
+                                <div class="empty-list {% if pending %} d-none {% endif %}">
                                     <p>You have no pending tasks.</p>
                                 </div>
-                                {% endfor %}
                             </div>
                         </div>
 
@@ -104,8 +104,8 @@
                                         <p>Paused</p>
                                     </div>
                                     <div class="operations">
-                                        <button class="btn resume">Resume</button>
-                                        <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
+                                        <button class="btn finalize">Finalized</button>
+                                        <button class="btn-i resume" title="Pause"><i class="bi bi-play-fill"></i></button>
                                         <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
@@ -132,11 +132,9 @@
                                 </div>
                                 {% endfor %}
 
-                                {% if not paused and not in_process %}
-                                <div class="empty-list">
-                                    <p>You have no tasks in process or paused.</p>
+                                <div class="empty-list {% if paused or in_process %} d-none {% endif %}">
+                                    <p>You have no paused or in process tasks.</p>
                                 </div>
-                                {% endif %}
                             </div>
                         </div>
 
@@ -154,17 +152,17 @@
                                         <p>{{ task.title }}</p>
                                     </div>
                                     <div class="status">
-                                        <p>{{ task.real_duration }}</p>
+                                        <p>{{ task.real_duration }} seconds</p>
                                     </div>
                                     <div class="operations">
                                         <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
                                     </div>
                                 </div>
-                                {% empty %}
-                                <div class="empty-list">
+                                {% endfor %}
+                                
+                                <div class="empty-list {% if finalized %} d-none {% endif %}">
                                     <p>You have no completed tasks.</p>
                                 </div>
-                                {% endfor %}
                             </div>
                         </div>
 
@@ -209,7 +207,7 @@
                     <p>In process</p>
                 </div>
                 <div class="operations">
-                    <button class="btn pause">Finalized</button>
+                    <button class="btn finalize">Finalized</button>
                     <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
                     <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
                     <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>

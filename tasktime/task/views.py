@@ -66,14 +66,12 @@ def UpdateView(request):
         try:
             task = Task.objects.get(id=id_task)
 
-            print(status)
-            print(task.status)
-
             if ((task.status == 0 and status == 1) or 
+                (task.status == 1 and status == 2) or
+                (task.status == 2 and status == 1) or
                 (task.status == 1 and status == 3) or
                 (task.status == 2 and status == 3) or
-                (task.status == 2 and status == 3) or
-                (task.status == 2 and status == 3)):
+                (status == 4)):
 
                 task.status = status; task.save()
 
@@ -83,7 +81,8 @@ def UpdateView(request):
                         "id": task.id,
                         "title": task.title,
                         "code": task.code,
-                        "status": task.status
+                        "status": task.status,
+                        "duration": task.real_duration
                     }
                 }
 
