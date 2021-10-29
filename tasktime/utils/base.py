@@ -1,6 +1,6 @@
 from django.db import models
 
-class Base(models.Model):
+class ModelBase(models.Model):
 
     code = models.SmallIntegerField("Code", blank=True)
     title = models.CharField("Title", max_length=30)
@@ -12,5 +12,8 @@ class Base(models.Model):
     updated = models.DateTimeField(
         "Updated", auto_now_add=False, auto_now=True)
 
+    class Meta:
+        abstract = True
+        
     def __str__(self):
         return self.title

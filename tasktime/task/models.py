@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.fields import DateTimeField
 
+from component.models import Component
 from .utils import STATUS, DIC_STATUS
 
 from datetime import datetime
@@ -8,6 +9,7 @@ from random import randint
 
 class Task(models.Model):
 
+    component = models.ForeignKey(Component, on_delete=models.CASCADE)
     code = models.SmallIntegerField("Code", blank=True)
     title = models.CharField("Title", max_length=30)
     description = models.CharField(

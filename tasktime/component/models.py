@@ -1,6 +1,8 @@
 from django.db import models
 
-from utils.models import Base
+from project.models import Project
+from utils.base import ModelBase
 
-class Component(Base):
-    pass
+class Component(ModelBase):
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
+

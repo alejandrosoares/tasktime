@@ -1,3 +1,11 @@
 from django.shortcuts import render
 
-# Create your views here.
+from .models import Project
+
+def MainView(request):
+    projects = Project.objects.all()
+
+    context = {
+        "projects": projects
+    }
+    return render(request, "project/index.html", context)
