@@ -1,7 +1,7 @@
-import {messageResponse} from "./messages.js";
+import {messageResponse} from "./utils.js";
 
 const csrf = document.querySelector(
-        '#tasks div.references input[name="csrfmiddlewaretoken"]'
+        '.references input[name="csrfmiddlewaretoken"]'
     ).value;
 
 
@@ -33,7 +33,7 @@ const makeResquest = (url, data, successFunction) => {
            messageResponse("error", null)
         }
     })
-    //.catch(error => messageResponse("error", null));
+    .catch(error => messageResponse("error", null));
 }
 
 export default makeResquest;

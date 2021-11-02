@@ -1,26 +1,47 @@
-@import url('message.css');
-@import url('create.css');
 @import url('task.css');
+@import url('create.css');
 
+/* TASK LIST */
 #tasks{
     margin:auto;
 }
+#tasks .list-container{
+    margin-top: 50px;
+}
+.list-container > .title{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.list-container > .title h2{
+    text-align: center;
+}
+.lists{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+.lists .pending,
+.lists .in-process,
+.lists .finalized{    
+    flex: 0 0 32%;
+}
+.empty-list{
+    margin: 10px auto;
+}
+.empty-list p{
+    text-align: left;
+}
 
-/* BTN */
+
+/* BUTTONS */
 .btn{
     color:white;
     padding: 3px 5px;
-    background-color:var(--dark);
+    background-color:#4156d9;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
-.btn-create{
-    border-top-left-radius: 0;
-    border-bottom-left-radius: 0;
-    z-index: 100;
-}
-
 .btn-i{
     width: 27px;
     height: 27px;
@@ -33,33 +54,19 @@
     background-color: rgba(0,0,0,0.07);
 }
 
-/* TASK LIST */
-#tasks .list-container{
-    margin-top: 50px;
-}
-.list-container > .title{
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.list-container > .title h2{
-    text-align: left;
+
+@media screen  and (max-width:767px){
+    .lists .pending,
+    .lists .in-process,
+    .lists .finalized{    
+        flex: 0 0 100%;
+    }
+    .create-container .new{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }
 
-.lists{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+.navigation{
+    margin: 15px;
 }
-.lists .pending,
-.lists .in-process,
-.lists .finalized{    
-    flex: 0 0 32%;
-}
-
-.empty-list{
-    margin: 10px auto;
-}
-.empty-list p{
-    text-align: left;
-}
-

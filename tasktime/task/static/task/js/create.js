@@ -1,15 +1,13 @@
-import { showInputMessage, messageResponse } from "./messages.js";
+import { showInputMessage, messageResponse, checkEmptyList } from "./utils.js";
 import makeResquest from "./request.js";
 
-const inputTask = document.getElementById("input-task"),
-    btnCreateTask = document.querySelector("#tasks .new-task button.btn"),
+const inputCreate = document.getElementById("input-create"),
+    btnCreate = document.getElementById("btn-create"),
     URL_CREATE = document.querySelector(
-        '#tasks .references .url-create'
+        '.references .url-create'
     ).value;
     
-function blurInputTask(){
-    showInputMessage(false, null);
-}
+function blurinputCreate(){ showInputMessage(false) }
 
 function createTaskNode(obj){
 
@@ -32,17 +30,18 @@ function createTaskNode(obj){
 
     listNodes.insertBefore(clone, firstNode);
 
+    checkEmptyList();
 }
 
 function successFunction(object){
     messageResponse("create", "Task created")
     createTaskNode(object.task)
 
-    inputTask.value = "";
+    inputCreate.value = "";
 }
 
 function createNewTask(){
-    const data = { title: inputTask.value }
+    const data = { title: inputCreate.value }
 
     makeResquest(URL_CREATE, data, successFunction);
 }
@@ -56,30 +55,23 @@ function newTask(e){
             const value = e.target.value;
     
             if(value.length === 0){
-                showInputMessage(
-                    true,
-                    "Write a new task below"
-                )
+                showInputMessage(true);
             }else{
-                createNewTask()
+                createNewTask();
             }
         }else{
-            if(value.length === 1) showInputMessage(false, null)
+            if(value.length === 1) showInputMessage(false)
         }
     }
 
     if(e.type === "click"){
 
-        const div = e.target.closest(".new-task");
-            value = div.querySelector("#input-task").value;
+        const value = inputCreate.value;
         
         if(value.length === 0){
-            showInputMessage(
-                true,
-                "Write a new task below"
-            )
+            showInputMessage(true);
         }else{
-            createNewTask()
+            createNewTask();
         }
 
         e.stopPropagation();
@@ -87,12 +79,10 @@ function newTask(e){
 }
 
 const loadCreate = () => {
-    inputTask.addEventListener("keyup", newTask);
-    inputTask.addEventListener("blur", blurInputTask);
-    btnCreateTask.addEventListener("click", newTask);
-    document.addEventListener("click", e => { 
-        showInputMessage(false, null)
-    })
+    inputCreate.addEventListener("keyup", newTask);
+    inputCreate.addEventListener("blur", blurinputCreate);
+    btnCreate.addEventListener("click", newTask);
+    document.addEventListener("click", e => showInputMessage(false));
 }
 
 export default loadCreate;

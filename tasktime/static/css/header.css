@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+header{
+  display: flex;
+  flex-flow: row wrap;
+}
+
+header a {
+  text-decoration: none;
+  color: var(--blue-3);
+}
+header .title{
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    padding-left: 25px;
+    font-family: 'Lobster', cursive;
+}
+header .title img{
+    max-width: 40px;
+    height: auto;
+}
+header .nav{
+    flex: 0 0 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header .nav ul{
+    list-style:none;
+    padding-left: 0;
+}
+header .nav ul li{
+    display: inline-block;
+}
+.nav ul li a{
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    transition: 0.5s all ease;
+    margin:2px 10px;
+}
+
+.nav ul li a:hover, .nav ul li a.active{
+    color:var(--blue-4);
+    text-decoration: underline;
+}

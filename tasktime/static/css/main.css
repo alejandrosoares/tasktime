@@ -1,9 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url('header.css');
+@import url('footer.css');
+
+/* extracted of main task 
+:root {
+    --white: #FAFBFD;
+    --grey:#E2E4F9;
+    --blue-1:#A2BAFA;
+    --blue-2:#3F49CC;
+    --blue-3:#4156d9;
+} */
 
 :root {
   --dark: #343a40;
-  --primary: #007bff;
-  --white: #f8f8f8;
+  --primary: #48A6E0;
+  --white: #FAFBFD;
+  --grey:#E2E4F9;
+  --blue-1:#A2BAFA;
+  --blue-2:#3F49CC;
+  --blue-3:#4156d9;
+  --blue-4:rgba(9,22,102,1);
 }
 
 *,
@@ -14,12 +30,12 @@
   box-sizing: border-box;
 }
 
-html {
+html{
   scroll-behavior: smooth;
-  color: var(--dark);
+  color: var(--blue-3);
 }
 
-body {
+body{
   overflow-x: hidden;
   background-color: var(--white);
   font-family: "Ubuntu", sans-serif;
@@ -28,47 +44,30 @@ body {
   flex-wrap: wrap;
   min-height: 100vh;
 }
-main {
+main{
   flex-grow: 1;
 }
 
-header,
-footer {
-  padding: 20px;
-}
-header a {
-  text-decoration: none;
-  color: var(--dark);
-}
-.container {
+
+
+.container{
   max-width: 1200px;
   margin: auto;
 }
 .d-none {
   display: none;
 }
-
 .hidden{
   visibility: hidden;
   opacity: 0;
 }
-
 .visible{
   visibility: visible;
   opacity: 1;
 }
-.navigation{
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
-.navigation a{
-  text-decoration: none;
-}
-.navigation .project{
-  font-size: 1.3rem;
-}
 
-.navigation .component{
-  font-size: 1.1rem;
-}
+
+
+
+

@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'task',
-    'component',
-    'project'
+    'home',
+    'projects'
 ]
 
 MIDDLEWARE = [
@@ -123,7 +123,8 @@ USE_TZ = False
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [ 
     BASE_DIR / 'static',
-    # BASE_DIR / 'task/static',
+    BASE_DIR / 'task/static',
+    BASE_DIR / 'home/static'
 ]
 
 # Default primary key field type

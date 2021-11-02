@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'projects/css/main.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    {% include 'projects/create.html' %}
+    
+    <div id="projects">
+
+        <div class="list-container">
+
+            <div class="title">
+                <h2>Your list projects</h2>
+            </div>
+
+            <div class="lists">
+
+                {% for project in projects %}
+                <div class="project" data-id="{{ project.id }}" data-code="{{ project.code }}">
+                    <div class="code">
+                        <p class="code">{{ project.code }}</p>
+                    </div>
+                    <div class="title">
+                        <p>{{ project.title }}</p>
+                    </div>
+                    <div class="percent_completed">
+                        <p>{{ project.percent_completed }} %</p>
+                    </div>
+                    <div class="operations">
+                        <button class="btn-i delete" title="Delete project"><i class="bi bi-trash"></i></button>
+                        <a href="{% url 'project:task:main' project.id %}" class="btn view-tasks">View tasks</a>
+                    </div>
+                </div>
+                {% endfor %}
+
+                <div class="empty-list {% if projects %} d-none {% endif %}">
+                    <p>You have no projects.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="references d-none">
+            {% csrf_token %}
+            <input type="hidden" class="url-create" value="{% url 'project:create' %}">
+            <input type="hidden" class="url-delete" value="{% url 'project:delete' %}">
+        </div>
+
+        <template id="item">
+            <div class="project" data-id="" data-code="">
+                <div class="code">
+                    <p class="code"></p>
+                </div>
+                <div class="title">
+                    <p></p>
+                </div>
+                <div class="percent_completed">
+                    <p></p>
+                </div>
+                <div class="operations">
+                    <button class="btn-i delete" title="Delete project"><i class="bi bi-trash"></i></button>
+                    <a href="" class="btn view-tasks">View tasks</a>
+                </div>
+            </div>
+        </template>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script src="{% static 'projects/js/main.js' %}" type="module"></script>
+{% endblock %}

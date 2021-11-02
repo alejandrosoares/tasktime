@@ -1,0 +1,91 @@
+/* TASK */
+.project{
+    flex: 0 0 45%;
+    background-color: white;
+    width: 100%;
+    height: 45px;
+    display: flex;
+    padding:5px;
+    margin:2px 10px;
+    border-radius: 5px;
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.25);
+    transition: .5s all ease-out;
+}
+.project:hover{
+    -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.5);
+}
+.project .code,
+.project .title,
+.project .percent_completed,
+.project .operations{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.project .code{
+    flex: 0 0 10%;
+}
+.project .title{
+    flex: 1 0 30%;
+}
+.project .percent_completed{
+    flex: 0 0 20%;
+}
+.project .operations{
+    flex: 0 0 40%; 
+}
+.btn{
+    color:white;
+    padding: 3px 5px;
+    background-color:#4156d9;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none !important;
+    font-size: 14px;
+}
+.btn.view-tasks{
+    margin-left: 5px;
+}
+.btn-i{
+    width: 27px;
+    height: 27px;
+    font-size: 16px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+}
+.btn-i:hover{
+    background-color: rgba(0,0,0,0.07);
+}
+.project .code p{
+    font-size: 14px;
+    color:#A2BAFA;
+}
+.project .title p{
+    text-align: left;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.project .operations button{
+    margin: 1px 2px;
+}
+.project .operations .btn{
+    min-width: 50px;
+}
+.project .operations .btn:hover{
+    background-color: var(--primary);
+}
+
+.project .operations .btn-i{
+    color:#A2BAFA;
+    cursor: pointer;
+}
+.project .operations .btn-i:hover{
+    color:#4156d9;
+}

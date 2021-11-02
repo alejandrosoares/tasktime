@@ -1,25 +1,18 @@
+import { checkEmptyList } from "./utils.js";
 import makeResquest from "./request.js";
 
-const URL_UPDATE = document.querySelector(
-  "#tasks .references .url-update"
-).value;
+const STATUS = {
+      pending: 0,
+      inProcess: 1,
+      paused: 2,
+      finalized: 3,
+      canceled: 4
+    },
+    URL_UPDATE = document.querySelector(
+      ".references .url-update"
+    ).value;
 
-const CLASS_LIST = ["pending", "in-process", "finalized"];
 
-function checkEmptyList() {
-  // Check if any list if empty
-
-  CLASS_LIST.forEach((list) => {
-    const tasks = document.querySelector(`.${list} .body-list .task`),
-      message = document.querySelector(`.${list}  .body-list .empty-list`);
-
-    if (tasks === null) {
-      message.classList.remove("d-none");
-    } else {
-      message.classList.add("d-none");
-    }
-  });
-}
 function moveNode(obj, classStates){
   const template = document.getElementById(`item-${classStates}`).content,
     listNodes = document.querySelector(`.${classStates} .body-list`),
@@ -37,8 +30,8 @@ function moveNode(obj, classStates){
   title.textContent = obj.title;
 
   if (classStates === "finalized") {
-    const duration = template.querySelector(".status p");
-    duration.textContent = `${obj.duration} seconds`;
+    const duration = template.querySelector(".duration p");
+    duration.textContent = `${obj.duration}`;
   }
 
   const clone = document.importNode(template, true);
@@ -60,39 +53,15 @@ function moveNode(obj, classStates){
   }, 700);
 }
 
-
 /* IN PROCESS */
 function successInProcess(object) {
   moveNode(object.task, "in-process");
 }
-function inProcessTask(e) {
-  const task = e.target.closest("div.task"),
-    id_task = task.getAttribute("data-id"),
-    data = {
-      id: id_task,
-      status: 1
-    };
-
-  makeResquest(URL_UPDATE, data, successInProcess);
-}
-
 
 /* FINALIZED */
 function successFinalized(object) {
   moveNode(object.task, "finalized");
 }
-function finalizedTask(e) {
-  const task = e.target.parentNode.parentNode,
-    id_task = task.getAttribute("data-id"),
-    data = {
-      id: id_task,
-      status: 3
-    };
-
-  makeResquest(URL_UPDATE, data, successFinalized);
-}
-
-
 
 /* PAUSED */
 function changeToResume(obj) {
@@ -109,18 +78,6 @@ function changeToResume(obj) {
 function successPause(object) {
   changeToResume(object.task);
 }
-function pauseTask(e) {
-  const task = e.target.closest("div.task"),
-    id_task = task.getAttribute("data-id"),
-    data = {
-      id: id_task,
-      status: 2
-    };
-
-    makeResquest(URL_UPDATE, data, successPause);
-}
-
-
 
 /* RESUME */
 function changeToPause(obj) {
@@ -138,17 +95,6 @@ function changeToPause(obj) {
 function successResume(object){
     changeToPause(object.task);
 }
-function resumeTask(e) {
-    const task = e.target.closest("div.task"),
-      id_task = task.getAttribute("data-id"),
-      data = {
-        id: id_task,
-        status: 1
-      };
-  
-    makeResquest(URL_UPDATE, data, successResume);
-}
-
 
 /* CANCEL */
 function successCancel(object){
@@ -162,38 +108,42 @@ function successCancel(object){
         checkEmptyList();
     }, 700);
 }
-function cancelTask(e){
-    const task = e.target.closest("div.task"),
+
+function changeStatusTask(trigger, status, callback){
+  const task = trigger.closest("div.task"),
       id_task = task.getAttribute("data-id"),
       data = {
         id: id_task,
-        status: 4
+        status: status
       };
-  
-    makeResquest(URL_UPDATE, data, successCancel);
-}
 
+    makeResquest(URL_UPDATE, data, callback);
+}
 
 function loadUpdate() {
   document.addEventListener("click", (e) => {
     if (e.target.matches("button.finalize")) {
-      finalizedTask(e);
+      changeStatusTask(e.target, STATUS.finalized, successFinalized)
     }
 
-    if(e.target.matches("button.start")) {
-      inProcessTask(e);
+    if(e.target.matches("button.start") || 
+      e.target.matches("button.start *")) {
+      changeStatusTask(e.target, STATUS.inProcess, successInProcess)
     }
 
-    if(e.target.matches("button.resume *")){
-        resumeTask(e);
+    if(e.target.matches("button.resume") ||
+      e.target.matches("button.resume *")){
+      changeStatusTask(e.target, STATUS.inProcess, successResume)
     }
 
-    if(e.target.matches("button.pause *")) {
-      pauseTask(e);
+    if(e.target.matches("button.pause") ||
+      e.target.matches("button.pause *")) {
+      changeStatusTask(e.target, STATUS.paused, successPause)
     }
 
-    if(e.target.matches("button.cancel *")){
-        cancelTask(e);
+    if(e.target.matches("button.cancel") ||
+      e.target.matches("button.cancel *")){
+      changeStatusTask(e.target, STATUS.canceled, successCancel)
     }
   });
 }

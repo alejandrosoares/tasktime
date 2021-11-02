@@ -1,186 +1,149 @@
+{% extends 'base.html' %}
+
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+{% block styles %}
     <link rel="stylesheet" href="{% static 'task/css/main.css' %}">
-    <link rel="stylesheet" href="{% static 'fonts/bootstrap-icons.min.css' %}">
-    <title>Task Time</title>
-</head>
-<body>
+{% endblock %}
 
+
+{% block content %}
+
+    {% include 'task/create.html' %}
     
+    <div id="tasks">
 
-    <header>
-        <a href="#">
-            <h1>Task Time</h1>
-        </a>
-    </header>
+        <div class="list-container">
 
-    <main>
-        <div class="container">
-
-            <div id="tasks">
-
-                <!-- Messages -->
-                <div class="tasks-message">
-                    <div class="msg create">
-                        <img src="{% static 'task/img/check.png' %}"> 
-                        <p></p>
-                    </div>
-                    <div class="msg error">
-                        <img src="{% static 'task/img/warning.png' %}"> 
-                        <p>Something went wrong <br>Please, try again</p>
-                    </div>
-                    <div class="msg delete">
-                        <img src="{% static 'task/img/trash.png' %}"> 
-                        <p>Task deleted</p>
-                    </div>
-                </div>
-                <!--/messages -->
-
-                <div class="new-task">
-                    <p class="msg hidden">Write a new task below</p>
-                    <input type="text" id="input-task" placeholder="White your new task">
-                    <button type="button" class="btn btn-create">Create</button>
-                </div>
-
-                <div class="list-container">
-                    <div class="navigation">
-                        <a href="#" class="project">Project 1 </a>
-                        <span>&gt;</span>
-                        <a href="" class="component">Component</a>
-                    </div>
-                    <div class="title">
-                        <h2>Your list task</h2>
-                    </div>
-
-                    <div class="lists">
-
-                        <div class="pending">
-                            <div class="title-list">
-                                <h4>Pending</h4>
-                            </div>
-                            <div class="body-list">
-                                {% for task in pending %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
-                                    <div class="code">
-                                        <p class="code">{{ task.code }}</p>
-                                    </div>
-                                    <div class="title">
-                                        <p>{{ task.title }}</p>
-                                    </div>
-                                    <div class="status">
-                                        <p>Pending</p>
-                                    </div>
-                                    <div class="operations">
-                                        <button class="btn start">Start</button>
-                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </div>
-                                {% endfor %}
-
-                                <div class="empty-list {% if pending %} d-none {% endif %}">
-                                    <p>You have no pending tasks.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="in-process">
-                            <div class="title-list">
-                                <h4>In process</h4>
-                            </div>
-                            <div class="body-list">
-                            
-                                {% for task in paused %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
-                                    <div class="code">
-                                        <p class="code">{{ task.code }}</p>
-                                    </div>
-                                    <div class="title">
-                                        <p>{{ task.title }}</p>
-                                    </div>
-                                    <div class="status">
-                                        <p>Paused</p>
-                                    </div>
-                                    <div class="operations">
-                                        <button class="btn finalize">Finalized</button>
-                                        <button class="btn-i resume" title="Pause"><i class="bi bi-play-fill"></i></button>
-                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </div>
-                                {% endfor %}
-
-                                {% for task in in_process %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
-                                    <div class="code">
-                                        <p class="code">{{ task.code }}</p>
-                                    </div>
-                                    <div class="title">
-                                        <p>{{ task.title }}</p>
-                                    </div>
-                                    <div class="status">
-                                        <p>In process</p>
-                                    </div>
-                                    <div class="operations">
-                                        <button class="btn finalize">Finalized</button>
-                                        <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
-                                        <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </div>
-                                {% endfor %}
-
-                                <div class="empty-list {% if paused or in_process %} d-none {% endif %}">
-                                    <p>You have no paused or in process tasks.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="finalized">
-                            <div class="title-list">
-                                <h4>Finalized</h4>
-                            </div>
-                            <div class="body-list">
-                                {% for task in finalized %}
-                                <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
-                                    <div class="code">
-                                        <p class="code">{{ task.code }}</p>
-                                    </div>
-                                    <div class="title">
-                                        <p>{{ task.title }}</p>
-                                    </div>
-                                    <div class="status">
-                                        <p>{{ task.real_duration }} seconds</p>
-                                    </div>
-                                    <div class="operations">
-                                        <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
-                                    </div>
-                                </div>
-                                {% endfor %}
-                                
-                                <div class="empty-list {% if finalized %} d-none {% endif %}">
-                                    <p>You have no completed tasks.</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-                <div class="references d-none">
-                    {% csrf_token %}
-                    <input type="hidden" class="url-create" value="{% url 'task:create' %}">
-                    <input type="hidden" class="url-update" value="{% url 'task:update' %}">
-                    <input type="hidden" class="url-delete" value="{% url 'task:delete' %}">
-                </div>
+            <div class="title">
+                <h2>Your list task</h2>
             </div>
-            
+
+            <div class="navigation">
+                <a href="{% url 'project:main' %}">My projects</a><span>&nbsp;&gt;&nbsp;{{ project_title }}</span>
+            </div>
+
+            <div class="lists">
+
+                <div class="pending">
+                    <div class="title-list">
+                        <h4>Pending</h4>
+                    </div>
+                    <div class="body-list">
+                        {% for task in pending %}
+                        <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
+                            <div class="code">
+                                <p class="code">{{ task.code }}</p>
+                            </div>
+                            <div class="title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="status">
+                                <p>Pending</p>
+                            </div>
+                            <div class="operations">
+                                <button class="btn start">Start</button>
+                                <button class="btn-i cancel" title="Cancel task"><i class="bi bi-x-lg"></i></button>
+                                <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="empty-list {% if pending %} d-none {% endif %}">
+                            <p>You have no pending tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="in-process">
+                    <div class="title-list">
+                        <h4>In process</h4>
+                    </div>
+                    <div class="body-list">
+                    
+                        {% for task in paused %}
+                        <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
+                            <div class="code">
+                                <p class="code">{{ task.code }}</p>
+                            </div>
+                            <div class="title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="status">
+                                <p>Paused</p>
+                            </div>
+                            <div class="operations">
+                                <button class="btn finalize">Finalized</button>
+                                <button class="btn-i resume" title="Pause task"><i class="bi bi-play-fill"></i></button>
+                                <button class="btn-i cancel" title="Cancel task"><i class="bi bi-x-lg"></i></button>
+                                <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        {% for task in in_process %}
+                        <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
+                            <div class="code">
+                                <p class="code">{{ task.code }}</p>
+                            </div>
+                            <div class="title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="status">
+                                <p>In process</p>
+                            </div>
+                            <div class="operations">
+                                <button class="btn finalize">Finalized</button>
+                                <button class="btn-i pause" title="Pause task"><i class="bi bi-pause-fill"></i></button>
+                                <button class="btn-i cancel" title="Cancel task"><i class="bi bi-x-lg"></i></button>
+                                <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+
+                        <div class="empty-list {% if paused or in_process %} d-none {% endif %}">
+                            <p>You have no paused or in process tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="finalized">
+                    <div class="title-list">
+                        <h4>Finalized</h4>
+                    </div>
+                    <div class="body-list">
+                        {% for task in finalized %}
+                        <div class="task" data-id="{{ task.id }}" data-code="{{ task.code }}" data-status="{{ task.status }}">
+                            <div class="code">
+                                <p class="code">{{ task.code }}</p>
+                            </div>
+                            <div class="title">
+                                <p>{{ task.title }}</p>
+                            </div>
+                            <div class="duration">
+                                <p>{{ task.str_duration }}</p>
+                            </div>
+                            <div class="operations">
+                                <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        
+                        <div class="empty-list {% if finalized %} d-none {% endif %}">
+                            <p>You have no completed tasks.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="references d-none">
+            {% csrf_token %}
+            <input type="hidden" class="url-create" value="{% url 'project:task:create' project_id=project_id %}">
+            <input type="hidden" class="url-update" value="{% url 'project:task:update' project_id=project_id %}">
+            <input type="hidden" class="url-delete" value="{% url 'project:task:delete' project_id=project_id %}">
+        </div>
+
         <template id="item-pending">
             <div class="task" data-id="" data-code="" data-status="0">
                 <div class="code">
@@ -194,12 +157,12 @@
                 </div>
                 <div class="operations">
                     <button class="btn start">Start</button>
-                    <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
+                    <button class="btn-i cancel" title="Cancel task"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
-
+    
         <template id="item-in-process">
             <div class="task" data-id="" data-code="" data-status="">
                 <div class="code">
@@ -213,13 +176,13 @@
                 </div>
                 <div class="operations">
                     <button class="btn finalize">Finalized</button>
-                    <button class="btn-i pause" title="Pause"><i class="bi bi-pause-fill"></i></button>
-                    <button class="btn-i cancel" title="Cancel"><i class="bi bi-x-lg"></i></button>
-                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
+                    <button class="btn-i pause" title="Pause task"><i class="bi bi-pause-fill"></i></button>
+                    <button class="btn-i cancel" title="Cancel task"><i class="bi bi-x-lg"></i></button>
+                    <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
-
+    
         <template id="item-finalized">
             <div class="task" data-id="" data-code="" data-status="3">
                 <div class="code">
@@ -228,23 +191,17 @@
                 <div class="title">
                     <p></p>
                 </div>
-                <div class="status">
+                <div class="duration">
                     <p></p>
                 </div>
                 <div class="operations">
-                    <button class="btn-i delete" title="Delete"><i class="bi bi-trash"></i></button>
+                    <button class="btn-i delete" title="Delete task"><i class="bi bi-trash"></i></button>
                 </div>
             </div>
         </template>
+    </div>
+{% endblock %}
 
-        </div>
-    </main>
-
-    <footer>
-        <h2>Footer</h2>
-    </footer>
-
-
+{% block script %}
     <script src="{% static 'task/js/main.js' %}" type="module"></script>
-</body>
-</html>
+{% endblock %}

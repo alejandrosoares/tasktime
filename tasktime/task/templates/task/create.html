@@ -1,0 +1,24 @@
+{% load static %}
+
+<div class="create-container">
+    <div class="messages">
+        <div class="msg create">
+            <img src="{% static 'img/check.png' %}">
+            <p></p>
+        </div>
+        <div class="msg error">
+            <img src="{% static 'img/warning.png' %}">
+            <p>Something went wrong <br>Please, try again</p>
+        </div>
+        <div class="msg delete">
+            <img src="{% static 'img/trash.png' %}">
+            <p>Task deleted</p>
+        </div>
+    </div>
+
+    <div class="new">
+        <p class="msg hidden">Write a new task below</p>
+        <input type="text" id="input-create" placeholder="Create your new task">
+        <button type="button" class="btn btn-create" id="btn-create">Create</button>
+    </div>
+</div>

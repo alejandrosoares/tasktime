@@ -1,0 +1,22 @@
+/* PROJECTS LIST */
+@import url('project.css');
+
+#projects{
+    margin:auto;
+}
+#projects .list-container{
+    margin-top: 50px;
+}
+.list-container > .title{
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+.list-container > .title h2{
+    text-align: center;
+}
+
+.lists{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: left;
+}

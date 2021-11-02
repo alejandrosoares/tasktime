@@ -20,6 +20,7 @@
 .task .code,
 .task .title,
 .task .status,
+.task .duration,
 .task .operations{
     display: flex;
     justify-content: center;
@@ -54,7 +55,7 @@
 .finalized .task .title{
     flex: 1 0 40%;
 }
-.finalized .task .status{
+.finalized .task .duration{
     flex: 0 0 40%;
 }
 .finalized .task .operations{
@@ -64,7 +65,7 @@
 
 .task .code p{
     font-size: 14px;
-    color:rgba(0,0,0,0.5);
+    color:#A2BAFA;
 }
 
 
@@ -75,29 +76,33 @@
     font-size: 14px;
 }
 
-.task .title span.code{
-    position: absolute;
-    left: 5px;
-    bottom: -5px;
-    font-size: 14px;
-    color:rgba(0,0,0,0.5);
-}
 
-.task .status p{
+.task .status p, .task .duration p{
     text-align: center;
     margin-bottom: 0;
     width: 100%;
     font-size: 13px;
-    color:rgba(0,0,0, .5);
+    color:#A2BAFA;
 }
+.task .duration p{
+    color:#3A61EA;
+}
+
 
 .task .operations button{
     margin: 1px 2px;
 }
 .task .operations .btn{
     min-width: 50px;
-    
 }
 .task .operations .btn:hover{
     background-color: var(--primary);
+}
+
+.task .operations .btn-i{
+    color:#A2BAFA;
+    cursor: pointer;
+}
+.task .operations .btn-i:hover{
+    color:#4156d9;
 }
