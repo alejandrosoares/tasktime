@@ -20,6 +20,8 @@
 }
 .project .code,
 .project .title,
+.project .duration,
+.project .number_tasks,
 .project .percent_completed,
 .project .operations{
     display: flex;
@@ -30,13 +32,23 @@
     flex: 0 0 10%;
 }
 .project .title{
-    flex: 1 0 30%;
+    flex: 1 0 25%;
 }
-.project .percent_completed{
+.project .number_tasks{
+    flex: 0 0 10%;
+}
+.project .duration{
     flex: 0 0 20%;
 }
+.project .percent_completed{
+    flex: 0 0 10%;
+}
 .project .operations{
-    flex: 0 0 40%; 
+    flex: 0 0 25%; 
+}
+
+.project p{
+    text-align: center;
 }
 .btn{
     color:white;
@@ -62,7 +74,9 @@
 .btn-i:hover{
     background-color: rgba(0,0,0,0.07);
 }
-.project .code p{
+.project .code p, 
+.project .number_tasks p,
+.project .duration p{
     font-size: 14px;
     color:#A2BAFA;
 }
@@ -88,4 +102,39 @@
 }
 .project .operations .btn-i:hover{
     color:#4156d9;
+}
+
+@media screen and (max-width:575px){
+    .project .percent_completed p{
+        font-size: 14px;
+    }
+}
+
+@media screen and (max-width:767px){
+    .project{
+        margin:2px auto;
+        flex: 0 0 100%;
+    }
+    .project .duration{
+        display: none;
+    }
+}
+
+@media screen and (min-width:768px) and (max-width:991px){
+    .project{
+        margin:2px auto;
+        flex: 0 0 100%;
+    }
+    .project .duration{
+        display: flex;
+    }
+
+    .project .code,
+    .project .title,
+    .project .duration,
+    .project .number_tasks,
+    .project .percent_completed,
+    .project .operations{
+        border: 1px solid red;
+    }
 }

@@ -17,7 +17,7 @@
             </span>
         </div>
         <div class="image">
-            <img src="{% static 'img/logo/logo.jpg'%}" alt="" width="500">
+            <img src="{% static 'img/logo/logo.jpg'%}" alt="Home image">
         </div>
     </div>
 
@@ -35,8 +35,25 @@
                 <li><p>You can create your tasks and when start at work press on <b>Start button</b>.</p></li>
                 <li><p>You can too paused when you need press on button <i class="bi bi-pause-fill"></i></p></li>
                 <li><p>And when you finish, hit a <b>Finalized</b> to get task duration.</p></li>
-                <li><p>Watch the video on the left.</p></li>
+                <li><p class="watch">Watch the video </p></li>
             </ul>
         </div>
     </div>
+
+    <script defer>
+        
+
+        document.addEventListener("DOMContentLoaded", e => {
+            const urlVideo =  "http://{{ request.get_host }}{% static 'video/how-it-work.mp4' %}";
+            const source = document.querySelector("#how .video source");
+            
+            setTimeout(() =>{
+                console.log("Change attribute ")
+                source.setAttribute("src", urlVideo);
+            }, 4000)
+            
+        })
+        
+
+    </script>
 {% endblock %}

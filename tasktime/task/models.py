@@ -2,12 +2,11 @@ from django.db import models
 from projects.models import Project
 
 from projects.models import Project
-from utils.functions import generate_code
+from utils.functions import generate_code, generate_str_duration
 from utils.models import Base
 from .utils import STATUS, DIC_STATUS
 
 from datetime import datetime
-import math
 
 class Task(Base):
 
@@ -15,10 +14,7 @@ class Task(Base):
     status = models.SmallIntegerField("Status", choices=STATUS, default=0)
     start = models.DateTimeField("Start", null=True, blank=True)
     end = models.DateTimeField("End",  null=True, blank=True)
-    real_duration = models.PositiveBigIntegerField(
-        "Duration", null=True, blank=True)
-    str_duration = models.CharField(
-        "String Duration", max_length=12, null=True, blank=True)
+
     estimated_duration = models.PositiveBigIntegerField(
         "Estimated Duration", null=True, blank=True)
     times = models.JSONField("Times", default=list, null=True, blank=True)
@@ -32,50 +28,23 @@ class Task(Base):
         self.times.append(duration)
     
     def __get_accumulated(self):
-        accumulated = 0
-
-        for duration in self.times:
-            accumulated += duration
-
+        accumulated = sum(self.times)
         self.real_duration = int(accumulated)
     
-    def __generate_str_duration(self):
-        hours = minutes = seconds = None
-        duration = self.real_duration
-        self.str_duration = ""
-
-        # Hours
-        hours = math.floor(duration / 3600)
-        if hours > 0:
-            print("hours ", hours)
-            duration -= 3600 * hours
-            self.str_duration = f"{hours} h, "
-        
-        # Minutes
-        minutes = math.floor(duration / 60)
-        if minutes > 0:
-            print("minutes ", minutes)
-            duration -= 60 * minutes
-            self.str_duration += f"{minutes} m, "
-        
-        # Seconds 
-        seconds = duration
-        self.str_duration += f"{seconds} s"
-
     def __in_process(self):
         self.start = datetime.now()
 
     def __paused(self):
-        print("paused")
         self.__save_duration()
+    
+    def __generate_str_duration(self):
+        self.str_duration = generate_str_duration(self.real_duration)
 
     def __finalized(self):
-        
-        print("saved duration")
 
         self.__save_duration()
         self.__get_accumulated()
-        self.__generate_str_duration()
+        self.__generate_str_duration() # In Base Class
 
     def __check_change_status(self):
         old = __class__.objects.get(id=self.id)
@@ -101,6 +70,18 @@ class Task(Base):
             self.__check_change_status()
 
         super(__class__, self).save(*args, **kwargs)
+
+        if created:
+            self.project.update_number_task(True)
+        else:
+            if self.status == 3:
+                self.project.update_percent_completed()
+
+    def delete(self, *args, **kwargs):
+
+        super(__class__, self).delete(*args, **kwargs)
+
+        self.project.update_number_task(False)
 
     def __str__(self):
         return f"{self.title} - {DIC_STATUS[self.status]}"

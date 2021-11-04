@@ -18,5 +18,15 @@
 .lists{
     display: flex;
     flex-flow: row wrap;
-    justify-content: left;
+    justify-content: center;
+}
+
+
+@media screen and (max-width:767px){
+    #projects{
+        margin: 10px;
+    }
+    #projects .list-container{
+        margin-top: 30px;
+    }
 }

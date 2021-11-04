@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.decorators.http import require_http_methods
 from django.http import JsonResponse
 
@@ -27,11 +27,16 @@ def MainView(request, project_id):
 @require_http_methods(['POST'])
 def CreateView(request, project_id):
 
+    try:
+        project = Project.objects.get(id=project_id)
+    except Project.DoesNotExist:
+        return redirect("project:main")
+
     data = loads(request.body)
     title = data.get("title", False)
 
     if title:
-        new = Task.objects.create(title=title)
+        new = Task.objects.create(title=title, project=project)
 
         res = {
             "status": "ok",

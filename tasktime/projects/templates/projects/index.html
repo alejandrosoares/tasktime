@@ -29,12 +29,18 @@
                     <div class="title">
                         <p>{{ project.title }}</p>
                     </div>
+                    <div class="number_tasks">
+                        <p>{{ project.number_tasks }} Tasks</p>
+                    </div>
                     <div class="percent_completed">
                         <p>{{ project.percent_completed }} %</p>
                     </div>
+                    <div class="duration">
+                        <p>{% if project.str_duration is not None %}{{ project.str_duration }}{% else %}No time yet{% endif %}</p>
+                    </div>
                     <div class="operations">
                         <button class="btn-i delete" title="Delete project"><i class="bi bi-trash"></i></button>
-                        <a href="{% url 'project:task:main' project.id %}" class="btn view-tasks">View tasks</a>
+                        <a href="{% url 'project:task:main' project.id %}" class="btn view-tasks">Tasks</a>
                     </div>
                 </div>
                 {% endfor %}
@@ -59,12 +65,18 @@
                 <div class="title">
                     <p></p>
                 </div>
+                <div class="number_tasks">
+                    <p>0 Task</p>
+                </div>
                 <div class="percent_completed">
                     <p></p>
                 </div>
+                <div class="duration">
+                    <p>No time yet</p>
+                </div>
                 <div class="operations">
                     <button class="btn-i delete" title="Delete project"><i class="bi bi-trash"></i></button>
-                    <a href="" class="btn view-tasks">View tasks</a>
+                    <a href="" class="btn view-tasks">Tasks</a>
                 </div>
             </div>
         </template>

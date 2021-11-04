@@ -1,5 +1,4 @@
 @import url('task.css');
-@import url('create.css');
 
 /* TASK LIST */
 #tasks{
@@ -56,14 +55,19 @@
 
 
 @media screen  and (max-width:767px){
+    #tasks{
+        margin:10px;
+    }
+    #tasks .list-container{
+        margin-top: 30px;
+    }
     .lists .pending,
     .lists .in-process,
     .lists .finalized{    
         flex: 0 0 100%;
     }
-    .create-container .new{
-        padding-left: 10px;
-        padding-right: 10px;
+    .empty-list p{
+        margin-left:15px;
     }
 }
 

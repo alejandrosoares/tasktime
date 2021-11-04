@@ -1,5 +1,5 @@
+/* CREATE NEW TASK OR PROJECT */       
 
-/* CREATE NEW TASK OR CREATE NEW PROJECT */       
 .create-container .new{
     margin:15px auto;
     max-width: 400px;
@@ -60,7 +60,7 @@
 .create-container .messages .msg.show{
     right: 0;
 }
-.create-container .messages  .msg p{
+.create-container .messages .msg p{
     text-align: center;
     margin: 0;
 }
@@ -71,4 +71,11 @@
     border-top-left-radius: 0 !important;
     border-bottom-left-radius: 0 !important;
     z-index: 100;
+}
+
+@media screen  and (max-width:767px){
+    .create-container .new{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
 }

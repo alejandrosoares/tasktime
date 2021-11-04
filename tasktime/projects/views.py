@@ -32,7 +32,8 @@ def CreateView(request):
                 "id": new.id,
                 "title": new.title,
                 "code": new.code,
-                "percent_completed": new.percent_completed
+                "percent_completed": new.percent_completed,
+                "str_duration": new.str_duration
             }
         }
 

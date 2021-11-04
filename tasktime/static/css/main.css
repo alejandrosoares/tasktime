@@ -1,15 +1,7 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100;300&display=swap");
 @import url('header.css');
+@import url('create.css');
 @import url('footer.css');
-
-/* extracted of main task 
-:root {
-    --white: #FAFBFD;
-    --grey:#E2E4F9;
-    --blue-1:#A2BAFA;
-    --blue-2:#3F49CC;
-    --blue-3:#4156d9;
-} */
 
 :root {
   --dark: #343a40;
@@ -21,7 +13,6 @@
   --blue-3:#4156d9;
   --blue-4:rgba(9,22,102,1);
 }
-
 *,
 *::before,
 *::after {
@@ -29,16 +20,14 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 html{
   scroll-behavior: smooth;
   color: var(--blue-3);
 }
-
 body{
   overflow-x: hidden;
   background-color: var(--white);
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto", sans-serif;
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
@@ -47,9 +36,6 @@ body{
 main{
   flex-grow: 1;
 }
-
-
-
 .container{
   max-width: 1200px;
   margin: auto;

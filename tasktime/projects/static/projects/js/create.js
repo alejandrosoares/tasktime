@@ -20,7 +20,8 @@ function createNode(obj){
     const div =  template.querySelector("div.project"),
         code = template.querySelector(".code p"),
         title = template.querySelector(".title p"),
-        percentCompleted = template.querySelector(".percent_completed p");
+        percentCompleted = template.querySelector(".percent_completed p"),
+        btnViewTasks = template.querySelector(".operations .view-tasks");
 
     
     div.setAttribute("data-id", obj.id);
@@ -28,6 +29,7 @@ function createNode(obj){
     code.textContent = obj.code;
     title.textContent = obj.title;
     percentCompleted.textContent = `${obj.percent_completed} %`;
+    btnViewTasks.setAttribute("href", `/projects/${obj.id}`);
 
     const clone = document.importNode(template, true);
 
