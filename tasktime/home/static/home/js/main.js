@@ -7,4 +7,4 @@ const loadHome = () => {
     video.load();    
 }
 
-document.addEventListener("DOMContentLoaded", loadHome);
+document.addEventListener("load", loadHome);
