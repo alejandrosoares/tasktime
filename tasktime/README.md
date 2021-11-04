@@ -24,17 +24,17 @@ This project is created with the following tools and language:
 ## Apps
 This project has 3 applications listed below:
 
-### Home
+### home
 This app show the home page.
 
-### Project
+### project
 This app register the project to which tha task belongs.
 In the dashboard show the next:
 - Number of tasks.
 - Percentage of tasks completed.
 - Sum of duration of completed tasks.
 
-### Task
+### task
 This app register the time of task.
 In the dashboard show the next:
 - Title task.

@@ -23,10 +23,11 @@
 
     <div id="how">
         <div class="video">
-            <video controls muted loop>
-                <source src="http://{{ request.get_host }}{% static 'video/how-it-work.mp4' %}" type="video/mp4">
-                You browser not support video
+            <video controls muted loop autoplay>
+                <source src="" type="video/mp4">
+                Your browser doesn't support embedded videos.
             </video>
+            <input type="hidden" class="url-video" value="http://{{ request.get_host }}{% static 'video/how-it-work.mp4' %}">
         </div>
         <div class="description">
             <p class="title">How it Work</p>
@@ -40,20 +41,5 @@
         </div>
     </div>
 
-    <script defer>
-        
-
-        document.addEventListener("DOMContentLoaded", e => {
-            const urlVideo =  "http://{{ request.get_host }}{% static 'video/how-it-work.mp4' %}";
-            const source = document.querySelector("#how .video source");
-            
-            setTimeout(() =>{
-                console.log("Change attribute ")
-                source.setAttribute("src", urlVideo);
-            }, 4000)
-            
-        })
-        
-
-    </script>
+    <script src="{% static 'home/js/main.js' %}" defer></script>
 {% endblock %}
