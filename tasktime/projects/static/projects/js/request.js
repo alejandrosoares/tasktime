@@ -1,4 +1,5 @@
-import {messageResponse} from "./utils.js";
+import { messageResponse } from "./utils";
+
 
 const csrf = document.querySelector(
         '.references input[name="csrfmiddlewaretoken"]'
@@ -23,17 +24,17 @@ const makeResquest = (url, data, successFunction) => {
 
     fetch(url, buildRequest(data))
     .then(response => {
-        if (response.ok) return response.json()
+        if (response.ok) return response.json();
     })
     .then(object => {
     
         if(object.status === "ok"){
             successFunction(object);
         }else{
-           messageResponse("error", null)
+           messageResponse("error", `Error: ${error}`);
         }
     })
-    //.catch(error => messageResponse("error", null));
+    .catch(error => messageResponse("error", `Error: ${error}`));
 }
 
-export default makeResquest;
+export { buildRequest, makeResquest };

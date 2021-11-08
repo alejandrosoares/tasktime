@@ -19,8 +19,13 @@ class Project(Base):
     def update_percent_completed(self):
         completed_tasks = self.tasks.filter(status=3)
 
-        self.percent_completed = round((len(completed_tasks) * 100) / self.number_tasks)
-        self.real_duration = sum(completed_tasks.values_list("real_duration", flat=True))
+        if self.number_tasks != 0: 
+            self.percent_completed = round((len(completed_tasks) * 100) / self.number_tasks)
+            self.real_duration = sum(completed_tasks.values_list("real_duration", flat=True))
+        else:
+            self.percent_completed = 0
+            self.real_duration = 0
+            
         self.__generate_str_duration() # In Base Class
         self.save()
         
@@ -36,6 +41,7 @@ class Project(Base):
         self.update_percent_completed()
 
     def save(self, *args, **kwargs):
+
         created = True if self._state.adding else False
 
         if created:

@@ -24,6 +24,7 @@ def MainView(request, project_id):
 
     return render(request, 'task/index.html', context)
 
+
 @require_http_methods(['POST'])
 def CreateView(request, project_id):
 
@@ -51,6 +52,7 @@ def CreateView(request, project_id):
         return JsonResponse(res)
 
     return JsonResponse({"status": "error", "task": None})
+
 
 @require_http_methods(['POST'])
 def UpdateView(request, project_id):
@@ -91,6 +93,7 @@ def UpdateView(request, project_id):
             pass
         
     return JsonResponse({"status": "error", "task": None})
+
 
 @require_http_methods(['POST'])
 def DeleteView(request, project_id):

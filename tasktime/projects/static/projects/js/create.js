@@ -1,5 +1,5 @@
 import { showInputMessage, messageResponse, checkEmptyList } from "./utils.js";
-import makeResquest from "./request.js";
+import { makeResquest } from "./request.js";
 
 const inputCreate = document.getElementById("input-create"),
     btnCreate = document.getElementById("btn-create"),
@@ -52,7 +52,7 @@ function createNewTask(){
 }
 
 
-function newTask(e){
+function newProject(e){
     let value = "";
     
     if(e.type === "keyup"){
@@ -84,7 +84,7 @@ function newTask(e){
 }
 
 const loadCreate = () => {
-    inputCreate.addEventListener("keyup", newTask);
+    inputCreate.addEventListener("keyup", newProject);
     inputCreate.addEventListener("blur", blurinputCreate);
     btnCreate.addEventListener("click", newTask);
     document.addEventListener("click", e => showInputMessage(false));

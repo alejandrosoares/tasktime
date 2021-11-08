@@ -1,5 +1,5 @@
 import { messageResponse, checkEmptyList } from "./utils.js";
-import makeResquest from "./request.js";
+import { makeResquest } from "./request.js";
 
 const URL_DELETE = document.querySelector(
   ".references .url-delete"

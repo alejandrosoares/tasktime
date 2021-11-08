@@ -38,9 +38,10 @@ function checkEmptyList() {
     }
 }
 
-export { 
+module.exports = { 
     showInputMessage, 
     messageResponse,
-    checkEmptyList,
-    };
+    checkEmptyList
+};
+
 

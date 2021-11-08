@@ -9,7 +9,7 @@ const inputCreate = document.getElementById("input-create"),
     
 function blurinputCreate(){ showInputMessage(false) }
 
-function createTaskNode(obj){
+function createNode(obj){
 
     const template = document.getElementById("item-pending").content,
         listNodes = document.querySelector(".pending .body-list"),
@@ -35,7 +35,7 @@ function createTaskNode(obj){
 
 function successFunction(object){
     messageResponse("create", "Task created")
-    createTaskNode(object.task)
+    createNode(object.task)
 
     inputCreate.value = "";
 }
@@ -60,7 +60,7 @@ function newTask(e){
                 createNewTask();
             }
         }else{
-            if(value.length === 1) showInputMessage(false)
+            if(value.length === 1) showInputMessage(false);
         }
     }
 
@@ -77,6 +77,7 @@ function newTask(e){
         e.stopPropagation();
     }
 }
+
 
 const loadCreate = () => {
     inputCreate.addEventListener("keyup", newTask);

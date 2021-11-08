@@ -1,10 +1,18 @@
 const loadHome = () => {
     const urlVideo = document.querySelector("#how .video .url-video").value,
-    source = document.querySelector("#how .video source"),
     video = document.querySelector("#how .video video");
 
+    const source = document.createElement("source");
     source.setAttribute("src", urlVideo);
+    source.setAttribute("type", "video/mp4");
+
+    video.appendChild(source);
     video.load();    
 }
 
-document.addEventListener("load", loadHome);
+document.addEventListener('DOMContentLoaded', loadHome);
+
+const add = (a, b) => a + b;
+
+
+export default add;

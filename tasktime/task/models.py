@@ -50,7 +50,7 @@ class Task(Base):
         old = __class__.objects.get(id=self.id)
 
         if ((old.status == 0 and self.status == 1) or
-                (old.status == 2 and self.status == 1)):
+            (old.status == 2 and self.status == 1)):
             self.__in_process()
 
         elif old.status == 1 and self.status == 2:
