@@ -19,7 +19,7 @@ class Project(Base):
     def update_percent_completed(self):
         completed_tasks = self.tasks.filter(status=3)
 
-        if self.number_tasks != 0: 
+        if self.number_tasks != 0 and len(completed_tasks) != 0: 
             self.percent_completed = round((len(completed_tasks) * 100) / self.number_tasks)
             self.real_duration = sum(completed_tasks.values_list("real_duration", flat=True))
         else:

@@ -7,7 +7,6 @@ from .models import Task
 
 from json import loads
 
-
 def MainView(request, project_id):
     
     project = Project.objects.get(id=project_id)
@@ -49,7 +48,7 @@ def CreateView(request, project_id):
             }
         }
 
-        return JsonResponse(res)
+        return JsonResponse(res, status=201)
 
     return JsonResponse({"status": "error", "task": None})
 

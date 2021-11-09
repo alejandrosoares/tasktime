@@ -20,10 +20,10 @@ def MainView(request):
 def CreateView(request):
 
     data = loads(request.body)
-
     title = data.get("title", False)
 
     if title:
+
         new = Project.objects.create(title=title)
 
         res = {
@@ -37,7 +37,7 @@ def CreateView(request):
             }
         }
 
-        return JsonResponse(res)
+        return JsonResponse(res, status=201)
 
     return JsonResponse({
         "status": "error", 
@@ -66,7 +66,7 @@ def DeleteView(request):
 
         except Project.DoesNotExist:
             pass
-        
+    
     return JsonResponse({
         "status": "error", 
         "project": None
