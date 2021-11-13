@@ -2,17 +2,17 @@
     "type": "module",
     "name": "tasktime-tests",
     "scripts": {
-        "test": "jest",
-        "home": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+        "test": "node --experimental-vm-modules --trace-warnings node_modules/jest/bin/jest.js"
     },
     "jest": {
         "testEnvironment": "jsdom",
         "verbose": true,
+        "silent": true,
         "passWithNoTests": true,
         "roots": [
-            "./home"
+            "../home/static/home/js/test",
+            "../projects/static/projects/js/test"
         ]
-
     },
     "devDependencies": {
         "jest": "^27.3.1"

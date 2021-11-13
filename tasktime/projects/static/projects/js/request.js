@@ -1,4 +1,4 @@
-import { messageResponse } from "./utils";
+import { messageResponse } from "./utils.js";
 
 
 const csrf = document.querySelector(

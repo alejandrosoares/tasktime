@@ -86,7 +86,7 @@ function newProject(e){
 const loadCreate = () => {
     inputCreate.addEventListener("keyup", newProject);
     inputCreate.addEventListener("blur", blurinputCreate);
-    btnCreate.addEventListener("click", newTask);
+    btnCreate.addEventListener("click", newProject);
     document.addEventListener("click", e => showInputMessage(false));
 }
 

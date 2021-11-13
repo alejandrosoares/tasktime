@@ -7,12 +7,9 @@ const loadHome = () => {
     source.setAttribute("type", "video/mp4");
 
     video.appendChild(source);
-    video.load();    
+    video.load();
 }
 
 document.addEventListener('DOMContentLoaded', loadHome);
 
-const add = (a, b) => a + b;
-
-
-export default add;
+export default loadHome;

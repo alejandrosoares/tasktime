@@ -1,19 +1,18 @@
 /*
-    Utilities for task app
+    Utilities for projects app
 */
 
 const showInputMessage = (show) => {
-    // Create new task
+    // Message what input to create is empty
     const msgNode = document.querySelector(".create-container .new p.msg");
 
-    if(show){
-        msgNode.classList.remove("hidden");
-    }else{
-        msgNode.classList.add("hidden")
-    }
+    (show)
+    ? msgNode.classList.remove("hidden")
+    : msgNode.classList.add("hidden");
 }
 
 const messageResponse = (divClass, message) => {
+    // Message if a task was created, deleted or an error ocurred
     const divMessage = document.querySelector(`.create-container .${divClass}`),
       pMessage = divMessage.querySelector("p");
 
@@ -26,22 +25,16 @@ const messageResponse = (divClass, message) => {
 }
 
 function checkEmptyList() {
-    // Check if any list if empty
+    // Check if projects list if empty
   
     const tasks = document.querySelector(`.lists .project`),
     message = document.querySelector(`.lists .empty-list`);
 
-    if(tasks === null){
-        message.classList.remove("d-none");
-    }else{
-        message.classList.add("d-none");
-    }
+    (tasks === null)
+    ? message.classList.remove("d-none")
+    : message.classList.add("d-none");
 }
 
-module.exports = { 
-    showInputMessage, 
-    messageResponse,
-    checkEmptyList
-};
+export { showInputMessage, messageResponse, checkEmptyList};
 
 
