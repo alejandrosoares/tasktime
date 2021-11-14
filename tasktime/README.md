@@ -7,7 +7,7 @@ The objective of this web application is to record the time it takes to complete
 - First create a project.
 - Second, create tasks inside of the project.
 - Third, when start a first task, press on Start Button for start registering the time.\
-You can pause the task at any time and resume it, pressing on pause and play button.
+  You can pause the task at any time and resume it, pressing on pause and play button.
 - Fourth, when you completed you task, press in Finalized button.
 
 ## Languages and tools
@@ -60,5 +60,16 @@ Follow the next steps:
 - Run python manage.py runserver
 - Open http://localhost:8000
 
-### Test
+## Test
+
+
+### Projects:
+Use case:
+    - Create project
+    - Delete project
+
+
+
+#### 
+
 

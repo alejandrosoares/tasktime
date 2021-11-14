@@ -1,9 +1,9 @@
 import { showInputMessage, messageResponse, checkEmptyList } from "../utils.js";
 
-describe('Projects', () =>{
 
-    // test utils.js
-    describe('Utils', () =>{
+const testUtils = () => {
+
+    describe('utils.js', () =>{
 
         test('Show and hide message what input to create is empty', () => {
 
@@ -81,6 +81,6 @@ describe('Projects', () =>{
 
         });
     })
-   
-})
+}
 
+export default testUtils;

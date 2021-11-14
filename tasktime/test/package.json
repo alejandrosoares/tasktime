@@ -11,7 +11,7 @@
         "passWithNoTests": true,
         "roots": [
             "../home/static/home/js/test",
-            "../projects/static/projects/js/test"
+            "../projects/static/projects/js/test/main"
         ]
     },
     "devDependencies": {

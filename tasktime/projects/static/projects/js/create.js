@@ -5,9 +5,9 @@ const inputCreate = document.getElementById("input-create"),
     btnCreate = document.getElementById("btn-create"),
     URL_CREATE = document.querySelector(
         '.references .url-create'
-    ).value;
+    );
     
-function blurinputCreate(){
+function blurInputCreate(){
     showInputMessage(false, null);
 }
 
@@ -23,7 +23,6 @@ function createNode(obj){
         percentCompleted = template.querySelector(".percent_completed p"),
         btnViewTasks = template.querySelector(".operations .view-tasks");
 
-    
     div.setAttribute("data-id", obj.id);
     div.setAttribute("data-code", obj.code);
     code.textContent = obj.code;
@@ -39,18 +38,17 @@ function createNode(obj){
 }
 
 function successFunction(object){
+    
     messageResponse("create", "Project created");
     createNode(object.project);
 
     inputCreate.value = "";
 }
 
-function createNewTask(){
-    const data = { title: inputCreate.value }
-
-    makeResquest(URL_CREATE, data, successFunction);
+function createNewProject(){
+    const data = { title: inputCreate.value };
+    makeResquest(URL_CREATE.value, data, successFunction);    
 }
-
 
 function newProject(e){
     let value = "";
@@ -58,26 +56,22 @@ function newProject(e){
     if(e.type === "keyup"){
         if(e.keyCode === 13){
             const value = e.target.value;
-    
-            if(value.length === 0){
-                showInputMessage(true);
-            }else{
-                createNewTask();
-            }
+            
+            value.length === 0
+                ? showInputMessage(true)
+                : createNewProject();
+                
         }else{
             if(value.length === 1) showInputMessage(false);
         }
     }
 
     if(e.type === "click"){
-
         const value = inputCreate.value;
         
-        if(value.length === 0){
-            showInputMessage(true);
-        }else{
-            createNewTask();
-        }
+        value.length === 0
+            ? showInputMessage(true)
+            : createNewProject();
 
         e.stopPropagation();
     }
@@ -85,12 +79,10 @@ function newProject(e){
 
 const loadCreate = () => {
     inputCreate.addEventListener("keyup", newProject);
-    inputCreate.addEventListener("blur", blurinputCreate);
+    inputCreate.addEventListener("blur", blurInputCreate);
     btnCreate.addEventListener("click", newProject);
     document.addEventListener("click", e => showInputMessage(false));
 }
 
-export default loadCreate;
+export { loadCreate, createNode };
     
-
-

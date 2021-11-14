@@ -1,14 +1,13 @@
 import { messageResponse } from "./utils.js";
 
 
-const csrf = document.querySelector(
-        '.references input[name="csrfmiddlewaretoken"]'
-    ).value;
-
-
 function buildRequest(data) {
 
-    const headers = new Headers();
+    const headers = new Headers(),
+        csrf = document.querySelector(
+            '.references input[name="csrfmiddlewaretoken"]'
+        ).value;
+
     headers.set("Content-Type", "application/json");
     headers.set("X-CSRFToken", csrf);
     headers.set("Access-Control-Allow-Origin", "same-origin");
@@ -28,13 +27,13 @@ const makeResquest = (url, data, successFunction) => {
     })
     .then(object => {
     
-        if(object.status === "ok"){
-            successFunction(object);
-        }else{
-           messageResponse("error", `Error: ${error}`);
-        }
+        object.status === "ok"
+            ? successFunction(object)
+            : messageResponse("error", `Error: ${error}`);
+
     })
     .catch(error => messageResponse("error", `Error: ${error}`));
 }
+
 
 export { buildRequest, makeResquest };
