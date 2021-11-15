@@ -20,7 +20,7 @@ const testRequest = () => {
             expect(typeof request.body).toBe("string");
 
         });
-    })
+    }) 
 }
 
 export default testRequest;

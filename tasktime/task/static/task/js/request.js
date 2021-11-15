@@ -1,13 +1,12 @@
 import { messageResponse } from "./utils.js";
 
-const csrf = document.querySelector(
-        '.references input[name="csrfmiddlewaretoken"]'
-    ).value;
 
+function buildRequest(data){
+    const csrf = document.querySelector(
+            '.references input[name="csrfmiddlewaretoken"]'
+        ).value, 
+        headers = new Headers();
 
-function buildRequest(data) {
-
-    const headers = new Headers();
     headers.set("Content-Type", "application/json");
     headers.set("X-CSRFToken", csrf);
     headers.set("Access-Control-Allow-Origin", "same-origin");

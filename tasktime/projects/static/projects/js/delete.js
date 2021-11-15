@@ -1,5 +1,5 @@
 import { messageResponse, checkEmptyList } from "./utils.js";
-import { makeResquest } from "./request/request.js";
+import { makeResquest } from "./request.js";
 
 const URL_DELETE = document.querySelector(
   ".references .url-delete"
@@ -26,8 +26,9 @@ function deleteProject(e) {
 
 function loadDelete(){
   document.addEventListener("click", (e) => {
-    if(e.target.matches("button.delete") || 
-      e.target.matches("button.delete *")) deleteProject(e);
+    if(e.target.matches("button.delete") || e.target.matches("button.delete *")){
+      deleteProject(e);
+    } 
   })
 }
  

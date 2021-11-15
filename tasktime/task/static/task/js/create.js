@@ -5,7 +5,7 @@ const inputCreate = document.getElementById("input-create"),
     btnCreate = document.getElementById("btn-create"),
     URL_CREATE = document.querySelector(
         '.references .url-create'
-    ).value;
+    );
     
 function blurinputCreate(){ showInputMessage(false) }
 
@@ -43,7 +43,7 @@ function successFunction(object){
 function createNewTask(){
     const data = { title: inputCreate.value }
 
-    makeResquest(URL_CREATE, data, successFunction);
+    makeResquest(URL_CREATE.value, data, successFunction);
 }
 
 
@@ -86,7 +86,7 @@ const loadCreate = () => {
     document.addEventListener("click", e => showInputMessage(false));
 }
 
-export default loadCreate;
+export { loadCreate, createNode };
     
 
 

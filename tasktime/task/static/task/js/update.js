@@ -10,7 +10,7 @@ const STATUS = {
     },
     URL_UPDATE = document.querySelector(
       ".references .url-update"
-    ).value;
+    );
 
 
 function moveNode(obj, classStates){
@@ -117,7 +117,7 @@ function changeStatusTask(trigger, status, callback){
         status: status
       };
 
-    makeResquest(URL_UPDATE, data, callback);
+    makeResquest(URL_UPDATE.value, data, callback);
 }
 
 function loadUpdate() {

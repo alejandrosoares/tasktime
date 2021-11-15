@@ -5,8 +5,8 @@ import testDelete from "../delete.test.js";
 
 
 describe('Projects', () =>{
-    //testUtils();
-    //testRequest();
-    //testCreate();
-    //testDelete();
+    testUtils();
+    testRequest();
+    testCreate();
+    testDelete();
 })

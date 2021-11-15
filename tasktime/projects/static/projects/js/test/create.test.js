@@ -9,15 +9,12 @@ const testCreate = () => {
                 <div class="create-container">
                     <div class="messages">
                         <div class="msg create">
-                            <img src="{% static 'img/check.png' %}">
                             <p></p>
                         </div>
                         <div class="msg error">
-                            <img src="{% static 'img/warning.png' %}">
                             <p>Something went wrong <br>Please, try again</p>
                         </div>
                         <div class="msg delete">
-                            <img src="{% static 'img/trash.png' %}">
                             <p>Project deleted</p>
                         </div>
                     </div>

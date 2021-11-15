@@ -30,7 +30,7 @@ const testUtils = () => {
 
         });
 
-        test('Message if a task was created, deleted or an  error ocurred', () => {
+        test('Message if a project was created, deleted or an  error ocurred', () => {
 
             document.body.innerHTML = `
                 <div class="create-container">
