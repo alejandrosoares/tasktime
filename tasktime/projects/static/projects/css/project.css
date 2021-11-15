@@ -46,14 +46,42 @@
 .project .operations{
     flex: 0 0 25%; 
 }
-
 .project p{
     text-align: center;
 }
+.project .code p, 
+.project .number_tasks p,
+.project .duration p{
+    font-size: 14px;
+    color:#3A61EA;
+}
+.project .title p{
+    text-align: left;
+    margin-bottom: 0;
+    width: 100%;
+    font-size: 14px;
+}
+.project .operations button{
+    margin: 1px 2px;
+}
+.project .operations .btn{
+    min-width: 50px;
+}
+.project .operations .btn:hover{
+    background-color: var(--primary);
+}
+.project .operations .btn-i{
+    color:var(--light-blue);
+    cursor: pointer;
+}
+.project .operations .btn-i:hover{
+    color:var(--blue-3);
+}
+
 .btn{
     color:white;
     padding: 3px 5px;
-    background-color:#4156d9;
+    background-color:var(--blue-3);
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -73,35 +101,6 @@
 }
 .btn-i:hover{
     background-color: rgba(0,0,0,0.07);
-}
-.project .code p, 
-.project .number_tasks p,
-.project .duration p{
-    font-size: 14px;
-    color:#A2BAFA;
-}
-.project .title p{
-    text-align: left;
-    margin-bottom: 0;
-    width: 100%;
-    font-size: 14px;
-}
-.project .operations button{
-    margin: 1px 2px;
-}
-.project .operations .btn{
-    min-width: 50px;
-}
-.project .operations .btn:hover{
-    background-color: var(--primary);
-}
-
-.project .operations .btn-i{
-    color:#A2BAFA;
-    cursor: pointer;
-}
-.project .operations .btn-i:hover{
-    color:#4156d9;
 }
 
 @media screen and (max-width:575px){
@@ -127,14 +126,5 @@
     }
     .project .duration{
         display: flex;
-    }
-
-    .project .code,
-    .project .title,
-    .project .duration,
-    .project .number_tasks,
-    .project .percent_completed,
-    .project .operations{
-        border: 1px solid red;
     }
 }

@@ -14,7 +14,6 @@
 .list-container > .title h2{
     text-align: center;
 }
-
 .lists{
     display: flex;
     flex-flow: row wrap;

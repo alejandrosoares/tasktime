@@ -43,7 +43,6 @@ class ViewTest(TestCase):
         self.assertIn("title", dic_response["project"])
         self.assertIn("code", dic_response["project"])
         self.assertIn("percent_completed", dic_response["project"])
-        self.assertIn("str_duration", dic_response["project"])
 
     def test_delete_project(self):
 

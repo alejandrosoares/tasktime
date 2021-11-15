@@ -1,5 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Lobster&family=Roboto:wght@100;300&display=swap");
 
+
+/* HOME */
 #home {
   color: var(--blue-3);
   border-radius: 10px;
@@ -121,13 +123,11 @@
     max-width: 350px;
   }
 }
-
 @media screen and (min-width: 768px) {
   #how .description .watch::after {
     content: "on the left.";
   }
 }
-
 @media screen and (max-width: 991px) {
   #how .description {
     border-bottom: 0;

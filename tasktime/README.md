@@ -61,15 +61,12 @@ Follow the next steps:
 - Open http://localhost:8000
 
 ## Test
+Unit test were performed
 
+### backend:
+Were made through TestCase of Django
+For run these, execute python manage.py test command
 
-### Projects:
-Use case:
-    - Create project
-    - Delete project
-
-
-
-#### 
-
-
+### frontend:
+Were made through Jest JS
+For run these, go to test directory (inside root directory) and execute npm run test
