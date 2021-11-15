@@ -1,11 +1,11 @@
 import { messageResponse, checkEmptyList } from "./utils.js";
-import makeResquest from "./request.js";
+import { makeResquest } from "./request.js";
 
 const URL_DELETE = document.querySelector(
   ".references .url-delete"
 );
 
-function removeTaskNode(id) {
+function removeNode(id) {
   const node = document.querySelector(`div[data-id="${id}"]`);
   node.remove();
 
@@ -14,7 +14,7 @@ function removeTaskNode(id) {
 
 function successFunction(object) {
   messageResponse("delete", null);
-  removeTaskNode(object.task.id);
+  removeNode(object.task.id);
 }
 
 function deleteTask(e) {
@@ -32,4 +32,4 @@ function loadDelete(){
   })
 }
  
-export default loadDelete;
+export { removeNode, loadDelete };

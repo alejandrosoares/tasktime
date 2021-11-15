@@ -7,9 +7,11 @@
     "jest": {
         "testEnvironment": "jsdom",
         "verbose": true,
-        "silent": false,
+        "silent": true,
         "passWithNoTests": true,
         "roots": [
+            "../home/static/home/js/test",
+            "../projects/static/projects/js/test/main",
             "../task/static/task/js/test/main"
         ]
     },

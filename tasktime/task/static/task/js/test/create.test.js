@@ -4,7 +4,7 @@ const testCreate = () => {
 
     describe('create.js', () => {
 
-        test('should be create a div.project node', () => {
+        test('should be create a div.task node', () => {
             document.body.innerHTML = `
             <div id="tasks">
                 <div class="list-container">
@@ -18,7 +18,28 @@ const testCreate = () => {
                                 <h4>Pending</h4>
                             </div>
                             <div class="body-list">
-                                <div class="empty-list {% if pending %} d-none {% endif %}">
+                                <div class="empty-list d-none">
+                                    <p>You have no pending tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="in-process">
+                            <div class="title-list">
+                                <h4>Pending</h4>
+                            </div>
+                            <div class="body-list">
+                                <div class="empty-list  d-none">
+                                    <p>You have no pending tasks.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="finalized">
+                            <div class="title-list">
+                                <h4>Pending</h4>
+                            </div>
+                            <div class="body-list">
+                                <div class="empty-list  d-none">
                                     <p>You have no pending tasks.</p>
                                 </div>
                             </div>

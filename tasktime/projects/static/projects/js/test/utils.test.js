@@ -5,7 +5,7 @@ const testUtils = () => {
 
     describe('utils.js', () =>{
 
-        test('Show and hide message what input to create is empty', () => {
+        test('Show and hide message when input to create is empty', () => {
 
             document.body.innerHTML = `
                 <div class="create-container">

@@ -1,11 +1,12 @@
 import { messageResponse } from "./utils.js";
 
 
-function buildRequest(data){
-    const csrf = document.querySelector(
+const buildRequest = (data) => {
+
+    const headers = new Headers(),
+        csrf = document.querySelector(
             '.references input[name="csrfmiddlewaretoken"]'
-        ).value, 
-        headers = new Headers();
+        ).value;
 
     headers.set("Content-Type", "application/json");
     headers.set("X-CSRFToken", csrf);
@@ -22,17 +23,17 @@ const makeResquest = (url, data, successFunction) => {
 
     fetch(url, buildRequest(data))
     .then(response => {
-        if (response.ok) return response.json()
+        if (response.ok) return response.json();
     })
-    .then( object => {
+    .then(object => {
     
-        if(object.status === "ok"){
-            successFunction(object);
-        }else{
-           messageResponse("error",  `Error: ${error}`)
-        }
+        object.status === "ok"
+            ? successFunction(object)
+            : messageResponse("error", `Error: ${error}`);
+
     })
     .catch(error => messageResponse("error", `Error: ${error}`));
 }
 
-export default makeResquest;
+
+export { buildRequest, makeResquest };

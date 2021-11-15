@@ -1,5 +1,5 @@
 import { showInputMessage, messageResponse, checkEmptyList } from "./utils.js";
-import makeResquest from "./request.js";
+import { makeResquest } from "./request.js";
 
 const inputCreate = document.getElementById("input-create"),
     btnCreate = document.getElementById("btn-create"),

@@ -1,5 +1,5 @@
 import { checkEmptyList } from "./utils.js";
-import makeResquest from "./request.js";
+import { makeResquest } from "./request.js";
 
 const STATUS = {
       pending: 0,

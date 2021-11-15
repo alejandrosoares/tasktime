@@ -1,7 +1,7 @@
 import { messageResponse } from "./utils.js";
 
 
-function buildRequest(data) {
+const buildRequest = (data) => {
 
     const headers = new Headers(),
         csrf = document.querySelector(
