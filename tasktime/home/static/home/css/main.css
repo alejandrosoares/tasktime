@@ -28,6 +28,7 @@
   flex: 0 0 50%;
   display: flex;
   justify-content: center;
+  position: relative;
 }
 #home .description h2 {
   font-size: 2rem;
@@ -42,20 +43,35 @@
   max-width: 50%;
   font-family: "Roboto", sans-serif;
 }
-
-#home .image img {
+#home .image img{
   display: block;
   width: 500px;
 }
+#home .image .attribute{
+  position: absolute;
+  bottom:1px;
+  right: 15px;
+  font-size: 12px;
+  color:var(--light-blue);
+}
+#home .image .attribute a{
+  text-decoration: none;
+  color:var(--light-blue) !important;
+}
+
 
 /* HOW WORK SECTION */
 #how {
   margin: 50px 15px 30px 15px;
   display: flex;
   flex-flow: row wrap;
+  border: none;
 }
-#how .video {
+#how .video{
   flex: 0 0 70%;
+  margin-left: -2px !important;
+  overflow-x: hidden;
+  border: none !important;
 }
 #how .description {
   margin-bottom: 4px; /* for align border with video */
@@ -68,11 +84,12 @@
   border-radius: 5px;
   display: block;
   margin: auto;
+  position: relative;
 }
 #how .video video {
   max-width: 100%;
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
+  border-top-left-radius: 7px;
+  border-bottom-left-radius: 7px;
 }
 #how .description .title {
   font-size: 2rem;
@@ -86,6 +103,15 @@
   margin-bottom: 10px;
   font-size: 1.2rem;
   font-family: "Roboto", sans-serif;
+}
+
+/* TO HIDE BORDER OF VIDEO */
+#how .video .border{
+  background-color: var(--white);
+  position: absolute;
+  left:0px;
+  width: 1px !important;
+  height: 100% !important;
 }
 
 @media screen and (max-width: 767px) {
@@ -128,9 +154,13 @@
     content: "on the left.";
   }
 }
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 1117px) {
   #how .description {
     border-bottom: 0;
     border-right: 0;
   }
+  #how .video video{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+  })
 }
