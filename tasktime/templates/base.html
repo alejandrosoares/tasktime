@@ -26,11 +26,11 @@
             <ul>
                 {% if request.path  == "/" or request.path == "" %}
                 <li><a href="#home">Home</a></li>
-                <li><a href="#how">How it work</a></li>
+                <li><a href="#how">How does it work</a></li>
                 <li><a href="{% url 'project:main' %}">My Projects</a></li>
                 {% else %}
                 <li><a href="{% url 'home:main' %}#home">Home</a></li>
-                <li><a href="{% url 'home:main' %}#how">How It Work</a></li>
+                <li><a href="{% url 'home:main' %}#how">How does it work?</a></li>
                 <li><a href="{% url 'project:main' %}">My Projects</a></li>
                 {% endif %}
             </ul>
@@ -48,11 +48,11 @@
             <ul>
                 {% if request.path  == "/" or request.path == "" %}
                 <li><a href="#home">Home</a></li>
-                <li><a href="#how">How it work</a></li>
+                <li><a href="#how">How does it work</a></li>
                 <li><a href="{% url 'project:main' %}">My Projects</a></li>
                 {% else %}
                 <li><a href="{% url 'home:main' %}#home">Home</a></li>
-                <li><a href="{% url 'home:main' %}#how" >How It Work</a></li>
+                <li><a href="{% url 'home:main' %}#how" >How does it work</a></li>
                 <li><a href="{% url 'project:main' %}" >My Projects</a></li>
                 {% endif %}
             </ul>
