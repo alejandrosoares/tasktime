@@ -28,7 +28,7 @@ This project has 3 applications listed below:
 This app show the home page.
 
 ### project
-This app register the project to which tha task belongs.
+This app register the project to which the task belongs.
 In the dashboard show the next:
 - Number of tasks.
 - Percentage of tasks completed.
