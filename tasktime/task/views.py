@@ -4,8 +4,10 @@ from django.http import JsonResponse
 
 from projects.models import Project
 from .models import Task
+from .utils import verifyStatus
 
 from json import loads
+
 
 def MainView(request, project_id):
     
@@ -66,12 +68,7 @@ def UpdateView(request, project_id):
         try:
             task = Task.objects.get(id=id)
 
-            if ((task.status == 0 and status == 1) or 
-                (task.status == 1 and status == 2) or
-                (task.status == 2 and status == 1) or
-                (task.status == 1 and status == 3) or
-                (task.status == 2 and status == 3) or
-                (status == 4)):
+            if verifyStatus(task.status , status):
 
                 task.status = status; task.save()
 
